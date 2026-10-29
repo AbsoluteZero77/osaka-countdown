@@ -18,6 +18,12 @@ jobs:
       - run: npm install
       - run: npx cap add android
       - run: npx cap sync android
+      - name: Add widget and icon
+        run: |
+          cp -r native/res/. android/app/src/main/res/
+          mkdir -p android/app/src/main/java/com/matthew/osakacountdown
+          cp native/CountdownWidget.java android/app/src/main/java/com/matthew/osakacountdown/
+          python3 native/patch_manifest.py
       - run: chmod +x android/gradlew && cd android && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
