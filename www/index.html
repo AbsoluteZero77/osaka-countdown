@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Osaka Countdown</title>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@500;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--ink:#0f1230;--dusk:#2b1f4f;--plum:#8a3a63;--peach:#f6a56b;--sun:#ef4b3a;--petal:#ffc6d3;--gold:#f2c46d;--paper:#fff7ee}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0;background:var(--ink)}
+body{display:grid;place-items:center;overflow:hidden}
+.widget{container-type:inline-size;position:relative;width:min(100vw,200vh);aspect-ratio:2/1;overflow:hidden;border-radius:4cqw;color:var(--paper);font-family:"Noto Sans JP",system-ui,sans-serif;background:linear-gradient(180deg,var(--ink) 0%,var(--dusk) 38%,var(--plum) 70%,var(--peach) 100%)}
+@media (max-width:0){.widget{border-radius:0}}
+svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,18,48,.62) 0%,rgba(15,18,48,.25) 48%,transparent 70%)}
+.top{position:absolute;left:5cqw;top:4.6cqw;display:flex;align-items:baseline;gap:2cqw}
+.top b{font-weight:900;font-size:3.6cqw;letter-spacing:.02em}
+.top span{font-size:3.2cqw;color:var(--gold);font-weight:900}
+.count{position:absolute;left:5cqw;bottom:6.5cqw;display:flex;align-items:flex-end;gap:2.2cqw;line-height:.8}
+.num{font-family:"Dela Gothic One",Impact,"Arial Black",sans-serif;font-size:35cqw;letter-spacing:-.02em;text-shadow:0 .8cqw 0 rgba(15,18,48,.35);font-variant-numeric:tabular-nums}
+.unit{font-family:"Dela Gothic One",Impact,sans-serif;font-size:7.4cqw;color:var(--gold);padding-bottom:1.2cqw}
+.hm{display:flex;align-items:flex-end;gap:1.4cqw}
+.hm .num{font-size:25cqw}
+.hm .unit{font-size:6cqw;padding-right:1.8cqw}
+.done .num{font-size:19cqw}
+.date{position:absolute;right:5cqw;top:4.8cqw;font-weight:900;font-size:2.6cqw;color:var(--paper);text-align:right;text-shadow:0 0 1cqw rgba(15,18,48,.6)}
+.petal{transform-box:fill-box;transform-origin:center;animation:fall 14s linear infinite}
+@keyframes fall{from{transform:translate(0,-30px) rotate(0)}to{transform:translate(-60px,260px) rotate(300deg)}}
+@media (prefers-reduced-motion:reduce){.petal{animation:none}}
+</style>
+</head>
+<body>
+<main class="widget" id="w" role="timer" aria-live="off">
+<svg class="scene" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs>
+<pattern id="sei" width="40" height="20" patternUnits="userSpaceOnUse">
+<g fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1">
+<circle cx="0" cy="20" r="20"/><circle cx="0" cy="20" r="14"/><circle cx="0" cy="20" r="8"/>
+<circle cx="40" cy="20" r="20"/><circle cx="40" cy="20" r="14"/><circle cx="40" cy="20" r="8"/>
+<circle cx="20" cy="10" r="20"/><circle cx="20" cy="10" r="14"/><circle cx="20" cy="10" r="8"/>
+</g></pattern>
+<radialGradient id="glow"><stop offset="0" stop-color="#ffd9a8" stop-opacity=".55"/><stop offset="1" stop-color="#ffd9a8" stop-opacity="0"/></radialGradient>
+</defs>
+<circle cx="250" cy="120" r="95" fill="url(#glow)"/>
+<circle cx="250" cy="120" r="52" fill="#ef4b3a"/>
+<g fill="#0f1230">
+<path d="M262 200 L274 170 L366 170 L378 200Z"/>
+<rect x="288" y="157" width="68" height="13"/>
+<path d="M276 159 Q322 148 368 159 L356 150 L288 150Z"/>
+<rect x="297" y="139" width="50" height="11"/>
+<path d="M290 141 Q322 131 354 141 L344 133 L300 133Z"/>
+<rect x="304" y="123" width="36" height="10"/>
+<path d="M297 125 Q322 116 347 125 L338 117 L306 117Z"/>
+<rect x="310" y="109" width="24" height="8"/>
+<path d="M303 111 Q322 101 341 111 L333 103 L311 103Z"/>
+<rect x="320" y="94" width="4" height="9"/>
+</g>
+<g fill="none" stroke="#f2c46d" stroke-width="1.4" stroke-linecap="round">
+<path d="M276 159 Q322 148 368 159"/><path d="M290 141 Q322 131 354 141"/><path d="M297 125 Q322 116 347 125"/><path d="M303 111 Q322 101 341 111"/>
+</g>
+<rect x="0" y="162" width="400" height="38" fill="url(#sei)"/>
+<g fill="#ffc6d3">
+<ellipse class="petal" cx="150" cy="10" rx="3" ry="2" style="animation-delay:-2s"/>
+<ellipse class="petal" cx="210" cy="0" rx="2.6" ry="1.8" style="animation-delay:-7s"/>
+<ellipse class="petal" cx="300" cy="-10" rx="3" ry="2" style="animation-delay:-10s"/>
+<ellipse class="petal" cx="380" cy="20" rx="2.4" ry="1.7" style="animation-delay:-4s"/>
+<ellipse class="petal" cx="100" cy="-5" rx="2.4" ry="1.7" style="animation-delay:-12s"/>
+</g>
+</svg>
+<div class="scrim"></div>
+<div class="top"><b>Osaka</b><span>大阪</span></div>
+<div class="date">3 Feb 2027</div>
+<div class="count" id="c"></div>
+</main>
+<script>
+(function(){
+var target=new Date(2027,1,3,0,0,0).getTime();
+var el=document.getElementById('c'),w=document.getElementById('w');
+function pad(n){return n<10?'0'+n:''+n}
+function tick(){
+var ms=target-Date.now();
+w.classList.toggle('done',ms<=0);
+if(ms<=0){el.innerHTML='<span class="num">Today!</span>';w.setAttribute('aria-label','Trip day');return}
+if(ms>864e5){
+var d=Math.floor(ms/864e5);
+el.innerHTML='<span class="num">'+d+'</span><span class="unit">'+(d===1?'day':'days')+'</span>';
+w.setAttribute('aria-label',d+' days until Osaka');
+}else{
+var h=Math.floor(ms/36e5),m=Math.floor(ms%36e5/6e4);
+el.innerHTML='<span class="hm"><span class="num">'+pad(h)+'</span><span class="unit">h</span></span><span class="hm"><span class="num">'+pad(m)+'</span><span class="unit">m</span></span>';
+w.setAttribute('aria-label',h+' hours '+m+' minutes until Osaka');
+}}
+tick();setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
